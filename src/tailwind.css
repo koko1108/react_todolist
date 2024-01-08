@@ -1,0 +1,4 @@
+/* 设置Tailwind的源CSS文件 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

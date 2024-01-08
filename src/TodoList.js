@@ -30,24 +30,37 @@ function TodoList() {
 
   return (
     <>
-      <div>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={handleInputChange}
-          placeholder="新增待辦事項"
-        />
-        <button onClick={handleAddTodo}>提交</button>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <div className="mb-4">
+          <input
+            type="text"
+            value={newTodo}
+            onChange={handleInputChange}
+            placeholder="新增待辦事項"
+            className="flex-1 p-2 border-2 border-gray-200 rounded mr-2"
+          />
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+            onClick={handleAddTodo}
+          >
+            提交
+          </button>
+        </div>
+        <ul className="list-disc pl-5">
+          {todoList.map((todo, index) => (
+            <li key={index} className="mb-2 flex justify-between items-center">
+              <span className="flex-1 pr-2">{todo}</span>
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded text-xs transition duration-300"
+                onClick={() => handleDeleteTodo(index)}
+              >
+                刪除
+              </button>
+              {/* 當你需要傳遞一個參數到事件處理函數時（如handleDeleteTodo(index)），你需要用一個函數來包裹它（如onClick={() => handleDeleteTodo(index)}），這樣就可以避免在渲染時立即調用它。 */}
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul>
-        {todoList.map((todo, index) => (
-          <li key={index}>
-            {todo} 
-            <button onClick={() => handleDeleteTodo(index)}>刪除</button>
-            {/* 當你需要傳遞一個參數到事件處理函數時（如handleDeleteTodo(index)），你需要用一個函數來包裹它（如onClick={() => handleDeleteTodo(index)}），這樣就可以避免在渲染時立即調用它。 */}
-          </li>
-        ))}
-      </ul>
     </>
   );
 }
