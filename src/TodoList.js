@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 
@@ -16,6 +16,11 @@ function TodoList() {
     const newTodoList = todoList.filter((_, idx) => idx !== index);
     setTodoList(newTodoList);
   };
+
+  useEffect(() => {
+    // 这里可以执行待办事项列表更新后的操作
+    console.log("待办事项列表已更新", todoList);
+  }, [todoList]); // 当todoList变化时，这个effect会运行
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
