@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
 
 function AddTodo({ onAdd, placeholder }) {
   const [newTodo, setNewTodo] = useState("");
   // setNewTodo 是一個函數，用來更新 newTodo 狀態的值。當你呼叫這個函數時，React 將重新渲染組件並將新的值設置給 newTodo。
+
+  const inputRef = useRef(null); // 创建一个 ref
 
   const handleInputChange = (event) => {
     setNewTodo(event.target.value);
@@ -13,6 +15,7 @@ function AddTodo({ onAdd, placeholder }) {
     if (newTodo.trim() !== "") {
       onAdd(newTodo);
       setNewTodo("");
+      inputRef.current.focus(); // 使用 ref 重新聚焦输入框
     }
   };
 
@@ -24,6 +27,7 @@ function AddTodo({ onAdd, placeholder }) {
         type="text"
         value={newTodo}
         onChange={handleInputChange}
+        ref={inputRef} 
       />
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300"

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// 從父組件接收 props，並在其 render 输出中使用它們。
 function TodoItem({ todo, index, onDelete }) {
   return (
     <li className="mb-2 flex justify-between items-center">

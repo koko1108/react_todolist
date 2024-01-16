@@ -7,6 +7,7 @@ function TodoList() {
   const [todoList, setTodoList] = useState([]);
   // newTodo 是一個狀態變數，它存儲了一個表示待辦事項（todo）的字串。在這個例子中，初始值被設置為空字串 ''。
 
+  // 處理添加新待辦事項的事件，它會改變 state
   const handleAddTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
   };
